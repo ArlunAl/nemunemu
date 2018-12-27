@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>ねーむーい</title>
+  <link rel="stylesheet" href="static/reset.css">
+  <link rel="stylesheet" href="static/index.min.css">
+</head>
+
+<body>
+  <div class="intro">
+    <h1>ねむい。</h1>
+    <p>眠いのです。ひじょーに眠いのです。（宿題ちゅー）</p>
+    <p>クッソ眠いのであーるんはある行動に出ました。</p>
+    <p>果たしてあーるんはねむねむをやっつけられるのでしょうか。</p>
+  </div>
+
+  <div class="input">
+    <span>行動を選択してね。</span>
+    <select onClick="location.href=actionkey_send(this)">
+      <option value="fight">たたかう</option>
+      <option value="escape">にげる</option>
+      <option value="sleep">ねむる</option>
+      <option value="dance">おどる</option>
+      <option value="handstand">さかだちする</option>
+      <option value="cat">ねこになる</option>
+    </select>
+  </div>
+
+  {% if title != None %}
+  <a href="http://127.0.0.1:5000/" class="close_overlay">こんにちはっ！</a>
+  <div class="modal_window">
+    <p class="result_is">結果は......</p>
+    <h3>{{title}}</h3>
+    <p>{{sentence}}</p>
+    <p>また遊んでね。</p>
+  </div>
+  {% endif %}
+
+  <script>
+    function actionkey_send(action_key){
+      var idx = action_key.selectedIndex;
+      var value = action_key.options[idx].value;
+      return `http://127.0.0.1:5000/?action_key=${value}`
+    }
+  </script>
+</body>
